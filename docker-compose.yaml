@@ -36,21 +36,6 @@ services:
     networks:
       - saminet
 
-#  apache:
- #   image: ubuntu/apache2
-  #  container_name: sami-apachecon
-   # command: >
-    #  /bin/bash -c "a2enmod proxy_fcgi && a2enmod setenvif && apache2-foreground"
-   # volumes:
-   #   - "./000-default.conf:/etc/apache2/sites-available/000-default.conf"
-    #  - "/var/www/html/sammy-php:/var/www/html" 
-     # - "./student.blade.php:/resources/views/student.blade.php"
-   # restart: unless-stopped
-   # ports:
-   #   - 8088:80
-   # networks:
-   #   - saminet
-
 networks:
   saminet:
     driver: bridge
