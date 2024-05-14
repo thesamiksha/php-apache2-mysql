@@ -1,0 +1,27 @@
+<?php
+$host = 'database'; // This should match the service name in your Docker Compose file
+$database = 'student';
+$user = 'sammy__user';
+$password = 'S@mi1234';
+
+$conn = new mysqli($host, $user, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Connected successfully";
+}
+
+use Illuminate\Support\Facades\DB;
+
+Route::get('/', function () {
+    // Select students who attended (assuming there's a column named 'attendance' in the table)
+    $attendance = DB::table('studentname')->where('attendance', 1)->get();
+    
+    // Select students who did not attend
+    $togo = DB::table('studentname')->where('attendance', 0)->get();
+
+    return view('student', ['attendance' => $attendance, 'togo' => $togo]);
+});
+
+?>
